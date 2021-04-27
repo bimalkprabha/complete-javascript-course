@@ -648,3 +648,42 @@ rivian
 
 console.log(rivian.speedUS);
 */
+
+function Car(speed, make) {
+    this.speed = speed;
+    this.make = make;
+}
+Car.prototype.accelerate = function(accelerate) {
+    this.speed += accelerate;
+    console.log(`Current speed ${this.speed}km/hr of ${this.make}`);
+}
+Car.prototype.brake = function(brake) {
+    this.speed -= brake;
+    console.log(`Current speed ${this.speed}km/hr of ${this.make}`);
+}
+
+const bmw = new Car(150, 'BMW');
+bmw.accelerate(10);
+bmw.brake(10);
+
+
+(function() {
+    function addMember(member) {
+        var members = [];
+
+        function printMembers() {
+            for (var i = 0; i < members.length; i++) {
+                console.log(members[i]);
+            }
+        }
+
+        return function(member) {
+            members[members.length] = member;
+            printMembers();
+        }
+    }
+
+    var newMember = addMember("John");
+    newMember("Anth");
+    newMember("Dan");
+})();
